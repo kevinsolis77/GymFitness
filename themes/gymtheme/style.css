@@ -1,0 +1,331 @@
+/*
+    Theme Name: GymThemeFit
+    Author: Kevin Solis
+    Author URI: https://github.com/kevinsolis77
+    Description: Theme Gym Fitness for Wordpress
+    Version: 1.0
+    License: GNU General Public License v2 or later
+    License URI: http://www.gnu.org/licenses/gpl-2.0.html
+    Tags: Fitness, Gym, Muscle
+    Text Domain: gymfitness
+
+
+*/
+
+
+:root{
+    /*Fuentes*/
+    --fuentePrincipal : 'Staatliches', cursive;
+    --fuenteTexto: 'Open Sans', sans-serif;
+    --fuenteSecundaria: 'Raleway', sans-serif;
+    
+    /*Colores*/
+    --colorPrimario: #FF5B00;
+    --grisOscuro: #2F2E2E;
+    --grisClaro: #EBEBEB;
+    --blanco: #ffffff;
+    --negro:#000000;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /* Now 10px = 1rem! */
+}
+
+body {
+    font-size: 16px; /* px fallback */
+    font-size: 1.6rem; /* default font-size for document */
+    line-height: 1.5; /* a nice line-height */
+    font-family: var(--fuenteSecundaria);
+
+  }
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+/*Utilidades*/
+.text-center{
+    text-align: center;
+}
+
+.texto-primario{
+    color: var(--colorPrimario);
+}
+
+.seccion{
+    padding: 5rem 0;
+}
+
+/*Headings*/
+
+h1, h2, h3, h4{
+    font-family: var(--fuentePrincipal);
+    margin: 1rem;
+    line-height: 1.2rem;
+}
+
+h1{
+    font-size: 6rem;
+}
+
+h2{
+    font-size: 4.8rem;
+}
+
+h3{
+    font-size: 3.6rem;
+}
+
+h4{
+    font-size: 2.4rem;
+}
+
+/*Globales*/
+hr{
+    border: 1px solid var(--grisClaro);
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.contenedor{
+    max-width: 1200px;
+    /*Va a estar en 95% siempre y cuando sobrepase los 1200px del maxwidth*/
+    width: 95%;
+    margin: 0 auto;
+}
+
+.imagen-destacada{
+    margin-bottom: 3rem;
+}
+
+hr{
+    border: 1px solid var(--grisClaro);
+}
+
+/* CONTENEDOR HEADER GLOBAL */
+.site-header{
+    background: var(--grisOscuro);
+    padding: 2rem 0;
+}
+
+.barra-navegacion{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-principal{
+    display: none;
+}
+
+@media (min-width:768px) {
+    .menu-principal{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .menu-principal .menu{
+        display: flex;
+        justify-content:space-around;
+    }
+    .menu-principal li{
+        margin-right: 2rem;
+    }
+    .menu-principal li:last-of-type{
+        margin-right: 0;
+    }
+}
+
+.menu-principal a{
+color: #fff;
+font-family: var(--fuentePrincipal);
+font-size: 2.2rem;
+padding: 1rem;
+display: block;
+}
+
+@media (min-width: 768px ) {
+    .menu-principal a{
+        font-size: 2.6rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .menu-principal a::before, .menu-principal a::after{
+        position: absolute;
+        left: 0;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 50%;
+        background-color: var(--colorPrimario);
+        z-index: -1;
+        transform: scaleX(0);
+        transition: transform .6s;
+    }
+
+    .menu-principal a::before{
+        top: 0;
+        transform-origin: left;
+    }
+    .menu-principal a::after{
+        top: 50%;
+        transform-origin: right;
+    }
+    .menu-principal a:hover::before{
+        transform: scaleX(1);
+    }
+    .menu-principal a:hover::after{
+        transform: scaleX(1);
+    }
+}
+
+.menu-principal .current_page_item{
+    border-bottom: 3px solid var(--colorPrimario);
+}
+
+/*Reescribir Estilos Mobil*/
+.slicknav_menu{
+    background-color: var(--grisOscuro);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.slicknav_btn{
+background-color: var(--colorPrimario);
+margin: 3rem 0;
+padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .slicknav_menu {
+        display: none;
+    }
+}
+
+.slicknav_nav a{
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: var(--fuentePrincipal);
+}
+
+.slicknav_nav a:hover{
+    background: transparent;
+    color: var(--colorPrimario);
+}
+
+/*Trabajando con el Footer*/
+.contenido-footer {
+    padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+    .contenido-footer {
+        display: flex;
+        justify-content: space-between;
+        
+    }   
+}
+
+ul#menu-footer-1 {
+    display: flex;
+    justify-content: center;
+}
+
+.site-footer .menu-principal{
+    display: block;
+}
+
+.site-footer nav li a{
+    color: var(--grisOscuro);
+    text-align: center;
+    font-size: 2.4rem;
+    padding: 0 1rem;
+}
+
+.site-footer .menu-principal .current_page_item{
+    border: none;
+}
+@media (min-width: 768px) {
+    .site-footer .menu-principal .current_page_item{
+        border-bottom: 3px solid var(--colorPrimario);
+    }
+}
+
+.copyright{
+    text-align: center;
+    font-family: var(--fuentePrincipal);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.site-footer .menu-principal ::before, .site-footer .menu-principal ::after{
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .copyright{
+        font-size: 2rem;
+        margin: 0;
+    }   
+}
+
+/* Estilos para paginas de contenido */
+.contenedor-paginas{
+    margin: 3rem;
+}
+
+/*PAGINAS*/
+.pagina h1{
+    margin-bottom: 4rem;
+}
+
+/*@media (min-width: 768px) {
+    .pagina.con-sidebar{
+        display: flex;
+        justify-content: space-between;
+    }    
+
+    .con-sidebar .contenido-principal{
+        flex: 0 0 calc(65% - 2rem);
+    }
+
+    .con-sidebar .sidebar{
+        flex: 0 0 calc(35% - 2rem);
+    }
+}*/
+
+/* Creando el Sidebar*/
+.con-sidebar{
+    display: flex;
+    justify-content: space-between;
+}
+
+aside.sidebar h3 {
+    line-height: 24px;
+    font-size: 2.5rem;
+}
+
+aside.sidebar {
+    width: 100%;
+}
